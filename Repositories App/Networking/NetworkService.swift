@@ -12,10 +12,10 @@ class NetworkServices : NetworkServiceProtocol{
     
     static func getRepos<T : Decodable>(url : URL ,completionHandler: @escaping (T) -> Void ){
         let headers : HTTPHeaders = [
-                "Authorization": "Bearer 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",
+                "Authorization": "Bearer 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",
                 "X-GitHub-Api-Version": "2022-11-28"
             ]
-                AF.request(url,method: .get)
+                AF.request(url,method: .get,headers: headers)
                     .validate().response { resp in
                         switch resp.result{
                         case .success(let data):
