@@ -11,13 +11,8 @@ import Alamofire
 class NetworkServices {
     
     static func getRepos<T : Decodable>(url : URL ,completionHandler: @escaping (T) -> Void ){
-       // let url = URL(string: "https://api.github.com/repositories")
-//                guard let newUrl = url else {
-//                    return
-//                }
         let headers : HTTPHeaders = [
-                "Authorization": "Bearer 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",
-                "Accept": "application/json",
+                "Authorization": "Bearer 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",
                 "X-GitHub-Api-Version": "2022-11-28"
             ]
                 AF.request(url,method: .get)

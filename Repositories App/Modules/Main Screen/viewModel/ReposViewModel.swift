@@ -37,16 +37,7 @@ class ReposViewModel{
             self?.dateResult = result
         }
       dates.append(dateResult ?? RepoDate())
-        print("jessy\(dates)")
     }
-    
-//    func saveToCoreData(product : [Result]){
-//        ProductsCoreData.coreData.insertProduct(productItem: product)
-//    }
-//
-//    func getProductsFromeCoreData(){
-//        ProductsCoreData.coreData.fetchProducts()
-//    }
     
     func  getReposCount()-> Int{
         return reposResult?.count ?? 0
@@ -58,7 +49,6 @@ class ReposViewModel{
     
     
     func getDateAtIndex(index:Int)->RepoDate{
-      //  print("jessy\(dates[index])")
         return dates[index]
     }
         

@@ -34,7 +34,7 @@ struct Repos : Codable {
     var issuesURL, pullsURL, milestonesURL, notificationsURL: String?
     var labelsURL, releasesURL: String?
     var deploymentsURL: String?
-    var createdAt, updatedAt: Date?
+    var createdAt, updatedAt: String?
     
     enum CodingKeys: String, CodingKey {
         case id
