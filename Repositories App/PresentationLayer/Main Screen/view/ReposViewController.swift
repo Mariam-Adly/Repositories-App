@@ -60,7 +60,7 @@ class ReposViewController: UIViewController {
         }
     }
     
-    func extractNumbersFromString(_ inputString: String) -> [Int]? {
+    func extractNumbersFromString(_ inputString: String) -> Int? {
         var numbers: [Int] = []
         for num in inputString{
             if let number = Int(String(num)) {
@@ -70,10 +70,10 @@ class ReposViewController: UIViewController {
                 }
             }
         }
-//        let combinedNumber = numbers.reduce(0) { result, number in
-//            result * 10 + number
-//        }
-        return numbers
+        let combinedNumber = numbers.reduce(0) { result, number in
+            result * 10 + number
+        }
+        return combinedNumber
     }
 }
 
@@ -90,12 +90,17 @@ extension ReposViewController : UITableViewDataSource{
         cell.repoOwnerName.text = data?.owner?.login
         getDate(data: data?.owner?.login ?? "")
         let date = reposVM?.getDateAtIndex(index: indexPath.row)
-        if let extractedNumbers = extractNumbersFromString(data?.createdAt ?? "") {
+        if let extractedNumbers = extractNumbersFromString(date?.createdAt ?? "") {
             print(extractedNumbers)
+            if extractedNumbers < 2023{
+                cell.repoDate.text = "Thursday,Oct 22,2020"
+            }else{
+                cell.repoDate.text = "4 months ago"
+            }
         } else {
-            print("No numbers found")
+            cell.repoDate.text = "2 years ago"
         }
-        cell.repoDate.text = date?.createdAt
+        
         return cell
         
     }
