@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2CB029C3C1DF044F398BCE17 /* Pods_Repositories_App_Repositories_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C95752FE444D35C2707EB2 /* Pods_Repositories_App_Repositories_AppUITests.framework */; };
+		4490D57F2AEBFC72009DE9B6 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490D57E2AEBFC72009DE9B6 /* NetworkServiceProtocol.swift */; };
+		4490D5872AEC04AC009DE9B6 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490D5862AEC04AC009DE9B6 /* Owner.swift */; };
+		4490D5892AEC04F6009DE9B6 /* RepoDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490D5882AEC04F6009DE9B6 /* RepoDate.swift */; };
 		44D9BF3A2AEB620C0038F22D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9BF392AEB620C0038F22D /* AppDelegate.swift */; };
 		44D9BF3C2AEB620C0038F22D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9BF3B2AEB620C0038F22D /* SceneDelegate.swift */; };
 		44D9BF412AEB620C0038F22D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D9BF3F2AEB620C0038F22D /* Main.storyboard */; };
@@ -46,6 +49,9 @@
 
 /* Begin PBXFileReference section */
 		00C95752FE444D35C2707EB2 /* Pods_Repositories_App_Repositories_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Repositories_App_Repositories_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4490D57E2AEBFC72009DE9B6 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		4490D5862AEC04AC009DE9B6 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		4490D5882AEC04F6009DE9B6 /* RepoDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDate.swift; sourceTree = "<group>"; };
 		44D9BF362AEB620C0038F22D /* Repositories App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Repositories App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D9BF392AEB620C0038F22D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44D9BF3B2AEB620C0038F22D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +109,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4490D5802AEBFD0D009DE9B6 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				44D9BF782AEB63960038F22D /* Model */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
 		44D9BF2D2AEB620C0038F22D = {
 			isa = PBXGroup;
 			children = (
@@ -128,9 +142,9 @@
 		44D9BF382AEB620C0038F22D /* Repositories App */ = {
 			isa = PBXGroup;
 			children = (
-				44D9BF782AEB63960038F22D /* Model */,
-				44D9BF7A2AEB63970038F22D /* Service */,
-				44D9BF6C2AEB63760038F22D /* Modules */,
+				4490D5802AEBFD0D009DE9B6 /* DataLayer */,
+				44D9BF7A2AEB63970038F22D /* Networking */,
+				44D9BF6C2AEB63760038F22D /* PresentationLayer */,
 				44D9BF392AEB620C0038F22D /* AppDelegate.swift */,
 				44D9BF3B2AEB620C0038F22D /* SceneDelegate.swift */,
 				44D9BF3F2AEB620C0038F22D /* Main.storyboard */,
@@ -159,12 +173,12 @@
 			path = "Repositories AppUITests";
 			sourceTree = "<group>";
 		};
-		44D9BF6C2AEB63760038F22D /* Modules */ = {
+		44D9BF6C2AEB63760038F22D /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
 				44D9BF6D2AEB63760038F22D /* Main Screen */,
 			);
-			path = Modules;
+			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
 		44D9BF6D2AEB63760038F22D /* Main Screen */ = {
@@ -198,16 +212,19 @@
 			isa = PBXGroup;
 			children = (
 				44D9BF792AEB63960038F22D /* Repo.swift */,
+				4490D5862AEC04AC009DE9B6 /* Owner.swift */,
+				4490D5882AEC04F6009DE9B6 /* RepoDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		44D9BF7A2AEB63970038F22D /* Service */ = {
+		44D9BF7A2AEB63970038F22D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				44D9BF7B2AEB63970038F22D /* NetworkService.swift */,
+				4490D57E2AEBFC72009DE9B6 /* NetworkServiceProtocol.swift */,
 			);
-			path = Service;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		894E3DFC53B19BF1B9B69F30 /* Frameworks */ = {
@@ -473,11 +490,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4490D5892AEC04F6009DE9B6 /* RepoDate.swift in Sources */,
 				44D9BF7C2AEB63970038F22D /* Repo.swift in Sources */,
 				44D9BF742AEB63760038F22D /* ReposViewModel.swift in Sources */,
 				44D9BF7D2AEB63970038F22D /* NetworkService.swift in Sources */,
+				4490D5872AEC04AC009DE9B6 /* Owner.swift in Sources */,
 				44D9BF442AEB620C0038F22D /* Repositories_App.xcdatamodeld in Sources */,
 				44D9BF752AEB63760038F22D /* ReposViewController.swift in Sources */,
+				4490D57F2AEBFC72009DE9B6 /* NetworkServiceProtocol.swift in Sources */,
 				44D9BF3A2AEB620C0038F22D /* AppDelegate.swift in Sources */,
 				44D9BF3C2AEB620C0038F22D /* SceneDelegate.swift in Sources */,
 				44D9BF762AEB63760038F22D /* ReposTableViewCell.swift in Sources */,

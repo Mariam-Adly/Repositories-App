@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class NetworkServices {
+class NetworkServices : NetworkServiceProtocol{
     
     static func getRepos<T : Decodable>(url : URL ,completionHandler: @escaping (T) -> Void ){
         let headers : HTTPHeaders = [
