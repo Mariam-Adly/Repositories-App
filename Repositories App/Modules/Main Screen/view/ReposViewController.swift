@@ -59,6 +59,22 @@ class ReposViewController: UIViewController {
             }
         }
     }
+    
+    func extractNumbersFromString(_ inputString: String) -> [Int]? {
+        var numbers: [Int] = []
+        for num in inputString{
+            if let number = Int(String(num)) {
+                numbers.append(number)
+                if numbers.count == 4 {
+                    break
+                }
+            }
+        }
+//        let combinedNumber = numbers.reduce(0) { result, number in
+//            result * 10 + number
+//        }
+        return numbers
+    }
 }
 
 extension ReposViewController : UITableViewDataSource{
@@ -69,24 +85,17 @@ extension ReposViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as! ReposTableViewCell
         let data = reposVM?.getRepoAtIndex(index: indexPath.row)
-      //  self.productVM?.saveToCoreData(product: self.productVM?.productsResult ?? [Result()])
-        cell.repoImg.sd_setImage(with: URL(string: data?.owner?.avatarURL ?? ""),placeholderImage: UIImage(named: "product"))
+        cell.repoImg.sd_setImage(with: URL(string: data?.owner?.avatarURL ?? ""))
         cell.repoName.text = data?.name
         cell.repoOwnerName.text = data?.owner?.login
         getDate(data: data?.owner?.login ?? "")
         let date = reposVM?.getDateAtIndex(index: indexPath.row)
+        if let extractedNumbers = extractNumbersFromString(data?.createdAt ?? "") {
+            print(extractedNumbers)
+        } else {
+            print("No numbers found")
+        }
         cell.repoDate.text = date?.createdAt
-//        for (index, char) in date.enumerated() where index + 3 < date.count {
-//            let startIndex = date.index(date.startIndex, offsetBy: index)
-//                let endIndex = date.index(startIndex, offsetBy: 3)
-//                let substring = date[startIndex...endIndex]
-//
-//                if let year = Int(substring), year > 2020 {
-//                    print("Found a year greater than 2020 at index", index)
-//                    cell.repoDate.text = date
-//                }
-//        }
-        
         return cell
         
     }
