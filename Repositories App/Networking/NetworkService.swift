@@ -12,7 +12,7 @@ class NetworkServices : NetworkServiceProtocol{
     
     static func getRepos<T : Decodable>(url : URL ,completionHandler: @escaping (T) -> Void ){
         let headers : HTTPHeaders = [
-                "Authorization": "Bearer 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",
+                "Authorization": "Bearer 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",
                 "X-GitHub-Api-Version": "2022-11-28"
             ]
                 AF.request(url,method: .get,headers: headers)
